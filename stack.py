@@ -1,0 +1,4 @@
+stack = []
+
+def StackInsert() :
+    if
