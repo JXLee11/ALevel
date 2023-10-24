@@ -1,4 +1,0 @@
-stack = []
-
-def StackInsert() :
-    if
