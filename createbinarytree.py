@@ -28,7 +28,7 @@ def InsertNode(NewItem, RootPointer):
             ThisNodePointer = RootPointer
             while ThisNodePointer != NullPointer:
                 PreviousNodePointer = ThisNodePointer
-                if NewItem < Tree[ThisNodePointer].Data
+                if NewItem < Tree[ThisNodePointer].Data:
                     TurnedLeft = True
                     ThisNodePointer = Tree[ThisNodePointer].LeftPointer
                 else:
