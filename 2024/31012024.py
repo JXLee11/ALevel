@@ -15,29 +15,52 @@ class Character:
             self.XPosition = 10000
         elif Int1 < 0:
             self.XPosition = 0
-        else:
-            self.XPosition = Int1
+        self.XPosition = Int1 + self.XPosition
 
     def SetYPosition(self, Int2):
         if Int2 > 10000:
             self.YPosition = 10000
         elif Int2 < 0:
             self.YPosition = 0
-        else:
-            self.YPosition = Int2
+        self.YPosition = Int2 + self.YPosition
 
     def Move(self, instruction):
         if instruction.upper() == "UP":
-            self.YPosition += 10
+            self.SetYPosition(10)
         elif instruction.upper() == "DOWN":
-            self.YPosition -= 10
+            self.SetYPosition(-10)
         elif instruction.upper() == "LEFT":
-            self.XPosition -= 10
+            self.SetXPosition(-10)
         elif instruction.upper() == "RIGHT":
-            self.XPosition += 10
+            self.SetXPosition(10)
 
 Jack = Character("Jack",50,50)
 
-class BikeCharacter:
-    def __init__(self, ):
-        super.__init__(self)
+class BikeCharacter(Character):
+    def __init__(self, NameP, XPositionP, YPositionP):
+        super().__init__(NameP, XPositionP, YPositionP)
+
+    def Move(self, instruction):
+        if instruction.upper() == "UP":
+            super().SetYPosition(20)
+        elif instruction.upper() == "DOWN":
+            super().SetYPosition(-20)
+        elif instruction.upper() == "LEFT":
+            super().SetXPosition(-20)
+        elif instruction.upper() == "RIGHT":
+            super().SetXPosition(20)
+
+Karla = BikeCharacter("Karla",100,50)
+
+UserCharacter = input("Jack or Karla?").upper()
+while UserCharacter != "JACK" and UserCharacter != "KARLA":
+    UserCharacter = input("Invalid, Please enter again: ")
+Direction = input("Please input the direction(Up, down, left or right?: ").upper()
+while Direction != "UP" and Direction != "DOWN" and Direction != "LEFT" and Direction != "RIGHT":
+    Direction = input("Invalid, Please enter again")
+if UserCharacter == "JACK":
+    Jack.Move(Direction)
+    print("Jack position is X direction =", Jack.GetXPosition(), " Y Position = ", Jack.GetYPosition())
+else:
+    Karla.Move(Direction)
+    print("Karla position is X direction =", Karla.GetXPosition(), "Y Position = ", Karla.GetYPosition())
