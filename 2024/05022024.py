@@ -1,4 +1,4 @@
-ArrayTreasure = []
+TreasureArray = []
 class TreasureChest:
     def __init__(self, QuestionP, AnswerP, PointsP):
         self.__Question = QuestionP
@@ -9,7 +9,7 @@ class TreasureChest:
         return self.__Question
 
     def CheckAnswer(self, AnswerP):
-        if int(self.__Answer) == AnswerP
+        if int(self.__Answer) == AnswerP:
             return True
         else:
             return False
@@ -33,7 +33,7 @@ def readData():
             question = Data
             answer = (file.readline()).strip()
             points = (file.readline()).strip()
-            ArrayTreasure.append(TreasureChest(question,answer,points))
+            TreasureArray.append(TreasureChest(question,answer,points))
             Data = (file.readline()).strip()
         file.close()
     except IOError:
@@ -46,5 +46,8 @@ if Choice > 0 and Choice < 6:
     result = False
     attempts = 0
     while result == False:
-        answer = int(input)
+        answer = int(input(TreasureArray[Choice-1].GetQuestion()))
+        result = TreasureArray[Choice-1].CheckAnswer(answer)
+        attempts += 1
+        print(int(TreasureArray[Choice-1].GetPoints(attempts)))
 
